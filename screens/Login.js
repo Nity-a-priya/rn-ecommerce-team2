@@ -1,16 +1,30 @@
-import { Button, TextInput, View, StyleSheet } from "react-native";
+import { useState } from "react";
+import { Button, StyleSheet, TextInput, View } from "react-native";
 
 function Login() {
+  const [name, setName] = useState("");
+
+  function inputHandler(value) {
+    setName(value);
+  }
+  function submitHandler() {
+    console.log(name);
+  }
+
   return (
     <View style={styles.rootContainer}>
-      <TextInput placeholder="Enter your name!" style={styles.textInput} />
+      <TextInput
+        placeholder="Enter your name!"
+        style={styles.textInput}
+        onChangeText={inputHandler}
+        value={name}
+      />
 
-      <Button title="Submit" />
+      <Button title="Submit" onPress={submitHandler} />
     </View>
-
   );
 }
-// TEST
+
 export default Login;
 const styles = StyleSheet.create({
   rootContainer: {
