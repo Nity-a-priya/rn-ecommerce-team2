@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-async function setStoreData(key, value) {
+export async function setStoreData(key, value) {
     try {
         await AsyncStorage.setItem(key, value);
     } catch (error) {
@@ -8,15 +8,14 @@ async function setStoreData(key, value) {
     }
 };
 
-async function getStoreData(key) {
+export async function getStoreData(key) {
+    console.log("In getStoredata")
     let value;
     try {
         value = await AsyncStorage.getItem(key);
     } catch (e) {
         console.log("Error ", e)
     }
+    console.log("Value == ", value)
     return value
 };
-
-
-export default {getStoreData, setStoreData}

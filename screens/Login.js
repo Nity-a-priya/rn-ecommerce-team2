@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
+import { setStoreData } from "../Utils/AsyncStorage";
 
 function Login() {
   const [name, setName] = useState("");
@@ -8,7 +9,7 @@ function Login() {
     setName(value);
   }
   function submitHandler() {
-    console.log(name);
+    setStoreData("name",name);
   }
 
   return (

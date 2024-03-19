@@ -1,15 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Login from "./screens/Login";
-import {getStoreData} from "../Utils/AsyncStorage";
-import { Home } from "wd/lib/special-keys";
+import {getStoreData} from "./Utils/AsyncStorage";
+import  Home  from "./screens/Home";
 
 
 
-function auth(){
+function Auth(){
+  
   const name = getStoreData("name");
   console.log(name);
-  if(!name){
+  if(!!name){
     return <Login />
   }
   else{
@@ -21,9 +22,14 @@ function auth(){
 
 export default function App() {
 
+  // const name = getStoreData("name");
+  // console.log("name ", name);
+
   return (
     <SafeAreaView>
-      <auth />
+      <Auth />
+
+    
     </SafeAreaView>
   );
 }
