@@ -7,9 +7,10 @@ function Login() {
 
       <Button title="Submit" />
     </View>
+
   );
 }
-
+// TEST
 export default Login;
 const styles = StyleSheet.create({
   rootContainer: {
