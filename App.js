@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import Login from "./screens/Login";
 import NameContextProvider, { NameContext } from "./Utils/name-context";
 import Home from "./screens/Home";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 function Navigate() {
   const nameCtx = useContext(NameContext);
@@ -22,12 +22,3 @@ export default function App() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

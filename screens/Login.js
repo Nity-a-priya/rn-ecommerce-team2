@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { StyleSheet, TextInput } from "react-native";
 import { NameContext } from "../Utils/name-context";
+import Button from "../components/ui/Button";
+import { LinearGradient } from "expo-linear-gradient";
 
 function Login() {
   const nameCtx = useContext(NameContext);
@@ -14,24 +16,23 @@ function Login() {
   }
 
   return (
-    <View style={styles.rootContainer}>
+    <LinearGradient colors={["#0B1C47", "#300000"]} style={styles.rootScreen}>
       <TextInput
         placeholder="Enter your name!"
+        placeholderTextColor="grey"
         style={styles.textInput}
         onChangeText={inputHandler}
         value={name}
       />
-
-      <Button title="Submit" onPress={submitHandler} />
-    </View>
+      <Button onPress={submitHandler}>Submit</Button>
+    </LinearGradient>
   );
 }
 
 export default Login;
 const styles = StyleSheet.create({
-  rootContainer: {
-    margin: 50,
-    alignItems: "center",
+  rootScreen: {
+    height: "100%",
     justifyContent: "center",
   },
   textInput: {
@@ -39,8 +40,9 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     padding: 16,
     borderRadius: 5,
-    marginHorizontal: 16,
-    width: "80%",
-    marginBottom: 10,
+    marginHorizontal: 60,
+    marginBottom: 20,
+    fontSize: 20,
+    color: "white",
   },
 });

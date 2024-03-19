@@ -3,7 +3,6 @@ import { useState, createContext } from "react";
 
 export const NameContext = createContext({
   name: "",
-  
   setStoreData: () => {},
   getStoreData: () => {},
 });
@@ -23,7 +22,6 @@ function NameContextProvider({ children }) {
 
   const values = {
     name: value,
-    
     setStoreData: setStoreData,
     getStoreData: getStoreData,
   };
