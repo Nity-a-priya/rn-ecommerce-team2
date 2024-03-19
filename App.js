@@ -1,39 +1,27 @@
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import Login from "./screens/Login";
-import {getStoreData} from "./Utils/AsyncStorage";
-import  Home  from "./screens/Home";
+import NameContextProvider, { NameContext } from "./Utils/name-context";
+import Home from "./screens/Home";
+import { useContext, useEffect, useState } from "react";
 
+function Navigate() {
+  const nameCtx = useContext(NameContext);
 
+  nameCtx.getStoreData("name");
 
-function Auth(){
-  
-  const name = getStoreData("name");
-  console.log(name);
-  if(!!name){
-    return <Login />
-  }
-  else{
-   return <Home />
-  }
-
+  return !!nameCtx.name ? <Home /> : <Login />;
 }
 
-
 export default function App() {
-
-  // const name = getStoreData("name");
-  // console.log("name ", name);
-
   return (
     <SafeAreaView>
-      <Auth />
-
-    
+      <NameContextProvider>
+        <Navigate />
+      </NameContextProvider>
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

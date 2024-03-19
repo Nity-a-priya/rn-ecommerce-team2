@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
-import { setStoreData } from "../Utils/AsyncStorage";
+import { NameContext } from "../Utils/name-context";
 
 function Login() {
+  const nameCtx = useContext(NameContext);
   const [name, setName] = useState("");
 
   function inputHandler(value) {
     setName(value);
   }
   function submitHandler() {
-    setStoreData("name",name);
+    nameCtx.setStoreData("name", name);
   }
 
   return (
