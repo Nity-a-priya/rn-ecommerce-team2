@@ -17,61 +17,67 @@ import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+function AuthScreens() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Wishlist"
+        component={WishlistScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart-outline" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Cart"
+        component={CartScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="cart-outline" color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+function UnAuthScreen() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} />
+    </Stack.Navigator>
+  );
+}
+
 function Navigate() {
   const nameCtx = useContext(NameContext);
-
-  // Assuming `getStoreData` is a function defined in your context to get data
   nameCtx.getStoreData("name");
 
   return (
     <NavigationContainer>
-      {!!nameCtx.name ? (
-        <Tab.Navigator>
-
-          <Tab.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="home-outline" color={color} size={size} />
-              ),
-            }}
-          />
-
-          <Tab.Screen
-            name="Wishlist"
-            component={WishlistScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="heart-outline" color={color} size={size} />
-              ),
-            }}
-          />
-
-          <Tab.Screen
-            name="Cart"
-            component={CartScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="cart-outline" color={color} size={size} />
-              ),
-            }}
-          />
-
-          <Tab.Screen
-            name="Settings"
-            component={SettingsScreen}
-            options={{
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="settings-outline" color={color} size={size} />
-              ),
-            }}
-          />
-
-        </Tab.Navigator>
-      ) : (
-        <Login />
-      )}
+      {!!nameCtx.name ? <AuthScreens /> : <UnAuthScreen />}
     </NavigationContainer>
   );
 }
