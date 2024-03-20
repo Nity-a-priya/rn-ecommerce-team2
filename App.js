@@ -12,6 +12,7 @@ import SettingsScreen from "./screens/SettingsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,10 +27,47 @@ function Navigate() {
     <NavigationContainer>
       {!!nameCtx.name ? (
         <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Wishlist" component={WishlistScreen} />
-          <Tab.Screen name="Cart" component={CartScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
+
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="home-outline" color={color} size={size} />
+              ),
+            }}
+          />
+
+          <Tab.Screen
+            name="Wishlist"
+            component={WishlistScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="heart-outline" color={color} size={size} />
+              ),
+            }}
+          />
+
+          <Tab.Screen
+            name="Cart"
+            component={CartScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="cart-outline" color={color} size={size} />
+              ),
+            }}
+          />
+
+          <Tab.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="settings-outline" color={color} size={size} />
+              ),
+            }}
+          />
+
         </Tab.Navigator>
       ) : (
         <Login />
