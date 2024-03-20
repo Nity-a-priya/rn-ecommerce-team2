@@ -1,7 +1,7 @@
 import { Text, StyleSheet, ImageBackground, View } from "react-native";
 import { NameContext } from "../Utils/name-context";
 import { useContext } from "react";
-function Home() {
+function HomeScreen() {
   const nameCtx = useContext(NameContext);
   return (
     <View style={styles.outerScreen}>
@@ -16,7 +16,8 @@ function Home() {
     </View>
   );
 }
-export default Home;
+export default HomeScreen;
+
 const styles = StyleSheet.create({
   outerScreen: {
     backgroundColor: "black",
