@@ -4,16 +4,16 @@ import { NameContext } from "../Utils/name-context";
 import Button from "../components/ui/Button";
 import { LinearGradient } from "expo-linear-gradient";
 
-function Login() {
+const Login = () => {
   const nameCtx = useContext(NameContext);
   const [name, setName] = useState("");
 
-  function inputHandler(value) {
+  const inputHandler = (value) => {
     setName(value);
-  }
-  function submitHandler() {
+  };
+  const submitHandler = () => {
     nameCtx.setStoreData("name", name);
-  }
+  };
 
   return (
     <LinearGradient colors={["#0B1C47", "#300000"]} style={styles.rootScreen}>
@@ -27,7 +27,7 @@ function Login() {
       <Button onPress={submitHandler}>Submit</Button>
     </LinearGradient>
   );
-}
+};
 
 export default Login;
 const styles = StyleSheet.create({

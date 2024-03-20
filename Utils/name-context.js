@@ -7,15 +7,15 @@ export const NameContext = createContext({
   getStoreData: () => {},
 });
 
-function NameContextProvider({ children }) {
+const NameContextProvider = ({ children }) => {
   const [value, setValue] = useState("");
 
-  function setStoreData(key, value) {
+  const setStoreData = (key, value) => {
     AsyncStorage.setItem(key, value);
     setValue(value);
   }
 
-  async function getStoreData(key) {
+  const getStoreData = async (key) => {
     let name = await AsyncStorage.getItem(key);
     setValue(name);
   }

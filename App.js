@@ -17,7 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function AuthScreens() {
+const AuthScreens = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -61,17 +61,17 @@ function AuthScreens() {
       />
     </Tab.Navigator>
   );
-}
+};
 
-function UnAuthScreen() {
+const UnAuthScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} />
     </Stack.Navigator>
   );
-}
+};
 
-function Navigate() {
+const Navigate = () => {
   const nameCtx = useContext(NameContext);
   nameCtx.getStoreData("name");
 
@@ -80,9 +80,9 @@ function Navigate() {
       {!!nameCtx.name ? <AuthScreens /> : <UnAuthScreen />}
     </NavigationContainer>
   );
-}
+};
 
-export default function App() {
+export default App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <NameContextProvider>
@@ -91,4 +91,4 @@ export default function App() {
       <StatusBar style="auto" />
     </SafeAreaView>
   );
-}
+};
